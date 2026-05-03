@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beč Oktobar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            font-family: 'Dancing Script', cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 85%;
+            padding: 40px 20px;
+        }
+        
+        h1 { 
+            color: white; 
+            font-size: 3.2rem; 
+            margin-bottom: 20px; 
+            text-shadow: 0 3px 10px rgba(0,0,0,0.25); 
+        }
+        
+        #tekst { 
+            color: white; 
+            font-size: 2.05rem; 
+            line-height: 1.5; 
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+        }
+        
+        .srce { 
+            font-size: 4.5rem; 
+            margin: 25px 0; 
+            animation: pulsiraj 2s infinite; 
+        }
+
+        @keyframes pulsiraj {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.18); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nadam se...</h1>
+        <div class="srce">💗</div>
+        <p id="tekst"></p>
+    </div>
+
+    <script>
+        const poruka = `Nadam se da si slobodna sredinom Oktobra. Voleo bih da odemo do Beča. Biće tamo i Jakov tih dana. Ponesi osmeh. Za sve ostalo ćemo lako.`;
+        
+        const reci = poruka.split(" ");
+        const tekstElement = document.getElementById("tekst");
+        let index = 0;
+
+        function prikaziRecPoRec() {
+            if (index < reci.length) {
+                tekstElement.textContent += reci[index] + " ";
+                index++;
+                setTimeout(prikaziRecPoRec, 1100); // svake ~1 sekunde nova reč
+            }
+        }
+
+        // Počni prikazivanje teksta
+        setTimeout(prikaziRecPoRec, 800);
+    </script>
+</body>
+</html>
